@@ -3,7 +3,7 @@ package net.ollie.validus.project;
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
 
-public sealed interface Project permits LocalProject {
+public interface Project {
 
     @Nonnull
     ProjectId id();

@@ -4,7 +4,6 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import net.ollie.validus.analysis.ProjectAnalysisBuilder;
-import net.ollie.validus.analysis.satisfaction.ClassMethodSatisfaction;
 import net.ollie.validus.analysis.satisfaction.Satisfaction;
 import net.ollie.validus.analysis.verification.Verification;
 import net.ollie.validus.annotation.Satisfies;
@@ -27,7 +26,8 @@ class ProjectAnalysisVisitor extends VoidVisitorAdapter<ProjectAnalysisBuilder> 
     }
 
     private Satisfaction getSatisfaction(final MethodDeclaration method) {
-        return new ClassMethodSatisfaction(method.getNameAsString());
+        //return new ClassMethodSatisfaction(method.getNameAsString());
+        throw new UnsupportedOperationException();
     }
 
     private void add(final Satisfaction satisfaction, final Satisfies satisfies, final ProjectAnalysisBuilder builder) {

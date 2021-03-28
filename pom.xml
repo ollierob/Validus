@@ -12,6 +12,7 @@
     <modules>
         <module>annotations</module>
         <module>analyzer</module>
+        <module>projects</module>
     </modules>
 
     <properties>

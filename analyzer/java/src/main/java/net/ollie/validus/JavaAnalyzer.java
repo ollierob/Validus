@@ -14,14 +14,14 @@ public class JavaAnalyzer implements Analyzer {
 
     @Nonnull
     @Override
-    public ProjectAnalysis analyze(final LocalProject project) throws AnalyzerException {
+    public ProjectAnalysis analyze(final LocalProject project) {
         try {
             final var compilationUnit = StaticJavaParser.parse(project.root());
             final var builder = new ProjectAnalysisBuilder(project);
             compilationUnit.accept(VISITOR, builder);
             return builder.build();
         } catch (final Exception ex) {
-            throw new AnalyzerException("Error analyzing " + project, ex);
+            throw new RuntimeException("Error analyzing " + project, ex);
         }
     }
 

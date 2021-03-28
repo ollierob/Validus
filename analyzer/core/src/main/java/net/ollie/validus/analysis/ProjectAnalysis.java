@@ -6,7 +6,7 @@ import net.ollie.validus.specification.SpecificationId;
 import javax.annotation.Nonnull;
 import java.util.Map;
 
-public interface ProjectAnalysis {
+public non-sealed interface ProjectAnalysis extends Analysis {
 
     @Nonnull
     Project project();

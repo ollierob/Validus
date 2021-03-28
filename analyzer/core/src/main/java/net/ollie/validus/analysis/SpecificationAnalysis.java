@@ -7,7 +7,7 @@ import net.ollie.validus.specification.Specification;
 import javax.annotation.Nonnull;
 import java.util.Set;
 
-public interface SpecificationAnalysis {
+public non-sealed interface SpecificationAnalysis extends Analysis {
 
     @Nonnull
     Specification specification();

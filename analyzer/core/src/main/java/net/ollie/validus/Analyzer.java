@@ -1,10 +1,10 @@
 package net.ollie.validus;
 
-import net.ollie.validus.analysis.Analysis;
+import net.ollie.validus.analysis.ProjectAnalysis;
 import net.ollie.validus.project.Project;
 
 public interface Analyzer {
 
-    Analysis analyze(Project project);
+    ProjectAnalysis analyze(Project project);
 
 }

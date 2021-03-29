@@ -14,4 +14,8 @@ public non-sealed interface ProjectAnalysis extends Analysis {
     @Nonnull
     Map<SpecificationId, SpecificationAnalysis> specifications();
 
+    default boolean hasSpecifications() {
+        return !this.specifications().isEmpty();
+    }
+
 }

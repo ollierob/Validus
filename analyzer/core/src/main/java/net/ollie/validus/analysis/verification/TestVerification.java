@@ -1,5 +1,5 @@
 package net.ollie.validus.analysis.verification;
 
-public record TestVerification() implements Verification {
+public record TestVerification(String testClassName, String testName) implements Verification {
 
 }

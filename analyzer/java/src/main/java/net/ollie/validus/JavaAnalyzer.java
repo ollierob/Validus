@@ -7,6 +7,8 @@ import net.ollie.validus.analysis.ProjectAnalysisBuilder;
 import net.ollie.validus.project.LocalProject;
 
 import javax.annotation.Nonnull;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class JavaAnalyzer implements Analyzer {
 
@@ -16,13 +18,42 @@ public class JavaAnalyzer implements Analyzer {
     @Override
     public ProjectAnalysis analyze(final LocalProject project) {
         try {
-            final var compilationUnit = StaticJavaParser.parse(project.root());
-            final var builder = new ProjectAnalysisBuilder(project);
-            compilationUnit.accept(VISITOR, builder);
+            final var builder = new ProjectAnalysisBuilder(project.source());
+            final var root = project.root().toFile();
+            this.visit(root, builder);
             return builder.build();
         } catch (final Exception ex) {
             throw new RuntimeException("Error analyzing " + project, ex);
         }
+    }
+
+    private void visit(final File file, final ProjectAnalysisBuilder builder) {
+        try {
+            if (file.isDirectory()) {
+                final var listed = file.listFiles();
+                if (listed == null) return;
+                for (final var subfile : listed) {
+                    this.visit(subfile, builder);
+                }
+            } else if (file.getName().endsWith(".java")) {
+                final var compilationUnit = StaticJavaParser.parse(file);
+                compilationUnit.accept(VISITOR, builder);
+            }
+        } catch (final FileNotFoundException ex) {
+            //Ignore
+        } catch (final VisitException ex) {
+            throw ex;
+        } catch (final Exception ex) {
+            throw new VisitException("Error visiting " + file, ex);
+        }
+    }
+
+    private static class VisitException extends RuntimeException {
+
+        VisitException(final String message, final Throwable cause) {
+            super(message, cause);
+        }
+
     }
 
 }

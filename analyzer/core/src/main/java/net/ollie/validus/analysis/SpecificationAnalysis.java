@@ -17,7 +17,7 @@ public non-sealed interface SpecificationAnalysis extends Analysis {
     }
 
     @Nonnull
-    Set<Satisfaction> satisfactions();
+    Set<? extends Satisfaction> satisfactions();
 
     default boolean isVerified() {
         return !this.verifications().isEmpty();

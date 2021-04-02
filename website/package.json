@@ -1,0 +1,27 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "private": "true",
+  "dependencies": {
+    "google-protobuf": "^3.15.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/google-protobuf": "^3.7.4",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "css-loader": "^5.2.0",
+    "ts-loader": "^8.1.0",
+    "ts-protoc-gen": "^0.14.0",
+    "typescript": "^4.2.3",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
+  },
+  "scripts": {
+    "protoc": "protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --js_out=import_style=commonjs,binary:src/main/protobuf --ts_out=src/main/protobuf --proto_path=target/protos target/protos/*.proto",
+    "build": "webpack --config webpack.config.js"
+  }
+}

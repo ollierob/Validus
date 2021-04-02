@@ -13,6 +13,7 @@
         <module>annotations</module>
         <module>analyzer</module>
         <module>projects</module>
+        <module>website</module>
     </modules>
 
     <properties>

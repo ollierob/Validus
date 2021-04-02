@@ -11,6 +11,14 @@
 
     <artifactId>website</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>net.ollie.validus</groupId>
+            <artifactId>analyzer-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <!--unpack .proto files-->

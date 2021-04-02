@@ -3,9 +3,8 @@ syntax = "proto3";
 package maven;
 
 option java_package = "net.ollie.validus";
-option java_outer_classname = "ProjectAnalysisProto";
+option java_outer_classname = "ProjectProto";
 
-message A {
-
+message Project {
 
 }

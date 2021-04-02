@@ -1,17 +1,21 @@
 syntax = "proto3";
 
-package maven;
-
 option java_package = "net.ollie.validus";
 option java_outer_classname = "AnalysisProto";
+
+import "project.proto";
+import "specification.proto";
 
 message ProjectAnalysis {
 
     string id = 1;
-    repeated SpecificationAnalysis specification = 2;
+    Project project = 2;
+    repeated SpecificationAnalysis specification = 3;
 
 }
 
 message SpecificationAnalysis {
+
+    Specification specification = 1;
 
 }

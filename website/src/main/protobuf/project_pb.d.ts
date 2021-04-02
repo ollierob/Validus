@@ -1,9 +1,12 @@
-// package: maven
+// package: 
 // file: project.proto
 
 import * as jspb from "google-protobuf";
 
 export class Project extends jspb.Message {
+  getId(): string;
+  setId(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Project.AsObject;
   static toObject(includeInstance: boolean, msg: Project): Project.AsObject;
@@ -16,6 +19,7 @@ export class Project extends jspb.Message {
 
 export namespace Project {
   export type AsObject = {
+    id: string,
   }
 }
 

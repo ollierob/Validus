@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package maven;
-
 option java_package = "net.ollie.validus";
 option java_outer_classname = "ProjectProto";
 
 message Project {
+
+    string id = 1;
 
 }

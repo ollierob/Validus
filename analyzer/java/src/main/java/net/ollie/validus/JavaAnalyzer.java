@@ -5,20 +5,31 @@ import com.github.javaparser.ast.visitor.VoidVisitor;
 import net.ollie.validus.analysis.ProjectAnalysis;
 import net.ollie.validus.analysis.ProjectAnalysisBuilder;
 import net.ollie.validus.project.LocalProject;
+import net.ollie.validus.specification.SpecificationProvider;
 
 import javax.annotation.Nonnull;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+@Singleton
 public class JavaAnalyzer implements Analyzer {
 
     private static final VoidVisitor<ProjectAnalysisBuilder> VISITOR = new ProjectAnalysisVisitor();
+
+    private final SpecificationProvider specificationProvider;
+
+    @Inject
+    JavaAnalyzer(final SpecificationProvider specificationProvider) {
+        this.specificationProvider = specificationProvider;
+    }
 
     @Nonnull
     @Override
     public ProjectAnalysis analyze(final LocalProject project) {
         try {
-            final var builder = new ProjectAnalysisBuilder(project.source());
+            final var builder = new ProjectAnalysisBuilder(project.source(), specificationProvider);
             final var root = project.root().toFile();
             this.visit(root, builder);
             return builder.build();

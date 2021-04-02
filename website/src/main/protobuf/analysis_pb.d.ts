@@ -1,11 +1,18 @@
-// package: maven
+// package: 
 // file: analysis.proto
 
 import * as jspb from "google-protobuf";
+import * as project_pb from "./project_pb";
+import * as specification_pb from "./specification_pb";
 
 export class ProjectAnalysis extends jspb.Message {
   getId(): string;
   setId(value: string): void;
+
+  hasProject(): boolean;
+  clearProject(): void;
+  getProject(): project_pb.Project | undefined;
+  setProject(value?: project_pb.Project): void;
 
   clearSpecificationList(): void;
   getSpecificationList(): Array<SpecificationAnalysis>;
@@ -25,11 +32,17 @@ export class ProjectAnalysis extends jspb.Message {
 export namespace ProjectAnalysis {
   export type AsObject = {
     id: string,
+    project?: project_pb.Project.AsObject,
     specificationList: Array<SpecificationAnalysis.AsObject>,
   }
 }
 
 export class SpecificationAnalysis extends jspb.Message {
+  hasSpecification(): boolean;
+  clearSpecification(): void;
+  getSpecification(): specification_pb.Specification | undefined;
+  setSpecification(value?: specification_pb.Specification): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SpecificationAnalysis.AsObject;
   static toObject(includeInstance: boolean, msg: SpecificationAnalysis): SpecificationAnalysis.AsObject;
@@ -42,6 +55,7 @@ export class SpecificationAnalysis extends jspb.Message {
 
 export namespace SpecificationAnalysis {
   export type AsObject = {
+    specification?: specification_pb.Specification.AsObject,
   }
 }
 

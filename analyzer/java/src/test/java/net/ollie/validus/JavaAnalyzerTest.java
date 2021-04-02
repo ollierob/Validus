@@ -3,16 +3,31 @@ package net.ollie.validus;
 import net.ollie.validus.project.LocalProject;
 import net.ollie.validus.project.Project;
 import net.ollie.validus.project.ProjectId;
+import net.ollie.validus.specification.Specification;
 import net.ollie.validus.specification.SpecificationId;
+import net.ollie.validus.specification.SpecificationProvider;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.io.File;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class JavaAnalyzerTest {
+
+    @Mock
+    private SpecificationProvider mockSpecProvider;
+
+    @BeforeEach
+    void beforeEach() {
+        mockSpecProvider = mock(SpecificationProvider.class, Mockito.RETURNS_MOCKS);
+    }
 
     @Test
     void shouldAnalyzeTestPackage() {
@@ -21,7 +36,7 @@ class JavaAnalyzerTest {
         final var root = Paths.get(new File(".").getAbsolutePath());
         final var project = new LocalProject(new ProjectId("test"), root, mockSource);
 
-        final var analyzer = new JavaAnalyzer();
+        final var analyzer = new JavaAnalyzer(mockSpecProvider);
 
         final var analysis = analyzer.analyze(project);
 

@@ -44,7 +44,7 @@ public class JavaAnalyzer implements Analyzer {
         } catch (final VisitException ex) {
             throw ex;
         } catch (final Exception ex) {
-            throw new VisitException("Error visiting " + file, ex);
+            throw new VisitException("Error analyzing " + file, ex);
         }
     }
 

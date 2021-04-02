@@ -1,5 +1,6 @@
 package net.ollie.validus.analysis;
 
+import com.google.common.collect.Iterables;
 import net.ollie.protobuf.BuildsProto;
 import net.ollie.validus.AnalysisProto;
 import net.ollie.validus.analysis.satisfaction.Satisfaction;
@@ -37,7 +38,9 @@ public non-sealed interface SpecificationAnalysis extends Analysis, BuildsProto<
     @Nonnull
     default AnalysisProto.SpecificationAnalysis.Builder toProtoBuilder() {
         return AnalysisProto.SpecificationAnalysis.newBuilder()
-                .setSpecification(this.specification().toProto());
+                .setSpecification(this.specification().toProto())
+                .addAllSatisfaction(Iterables.transform(this.satisfactions(), Satisfaction::toProto))
+                .addAllVerification(Iterables.transform(this.verifications(), Verification::toProto));
     }
 
 }

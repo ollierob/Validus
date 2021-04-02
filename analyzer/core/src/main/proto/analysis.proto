@@ -17,5 +17,15 @@ message ProjectAnalysis {
 message SpecificationAnalysis {
 
     Specification specification = 1;
+    repeated Satisfaction satisfaction = 2;
+    repeated Verification verification = 3;
+
+}
+
+message Satisfaction {
+
+}
+
+message Verification {
 
 }

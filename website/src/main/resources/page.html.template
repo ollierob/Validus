@@ -1,0 +1,13 @@
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap">
+</head>
+
+<body>
+    <div id="main"></div>
+    <%= htmlWebpackPlugin.tags.bodyTags %>
+</body>
+
+</html>

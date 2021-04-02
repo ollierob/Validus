@@ -1,6 +1,5 @@
 package net.ollie.validus;
 
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.expr.ArrayInitializerExpr;
@@ -20,6 +19,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 class ProjectAnalysisVisitor extends VoidVisitorAdapter<ProjectAnalysisBuilder> {
+
+    private final LocalJavaProject project;
+
+    ProjectAnalysisVisitor(LocalJavaProject project) {
+        this.project = project;
+    }
 
     @Override
     public void visit(final MethodDeclaration m, final ProjectAnalysisBuilder builder) {
@@ -47,9 +52,10 @@ class ProjectAnalysisVisitor extends VoidVisitorAdapter<ProjectAnalysisBuilder> 
         throw new UnsupportedOperationException("Cannot extract specifications from " + annotationExpression);
     }
 
-    private Satisfaction getSatisfaction(final MethodDeclaration method) {
-        final var classParent = getClass(method);
-        return new ClassMethodSatisfaction(null, classParent.getNameAsString(), method.getNameAsString());
+    private Satisfaction getSatisfaction(final MethodDeclaration methodDeclaration) {
+        final var method = JavaMethod.resolve(methodDeclaration);
+        final var url = project.resolveUrl(method);
+        return new ClassMethodSatisfaction(method.packageName(), method.className(), method.methodName(), url);
     }
 
     private void add(final Satisfaction satisfaction, final Set<SpecificationId> ids, final ProjectAnalysisBuilder builder) {
@@ -58,13 +64,10 @@ class ProjectAnalysisVisitor extends VoidVisitorAdapter<ProjectAnalysisBuilder> 
         }
     }
 
-    private Verification getVerification(final MethodDeclaration method) {
-        final var classParent = getClass(method);
-        return new TestVerification(classParent.getNameAsString(), method.getNameAsString());
-    }
-
-    private static ClassOrInterfaceDeclaration getClass(final MethodDeclaration method) {
-        return method.getParentNode().map(n -> (ClassOrInterfaceDeclaration) n).get();
+    private Verification getVerification(final MethodDeclaration methodDeclaration) {
+        final var method = JavaMethod.resolve(methodDeclaration);
+        final var url = project.resolveUrl(method);
+        return new TestVerification(method.className(), methodDeclaration.getNameAsString(), url);
     }
 
     private void add(final Verification verification, final Set<SpecificationId> ids, final ProjectAnalysisBuilder builder) {

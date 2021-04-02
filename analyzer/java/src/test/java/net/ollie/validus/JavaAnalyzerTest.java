@@ -1,9 +1,6 @@
 package net.ollie.validus;
 
-import net.ollie.validus.project.LocalProject;
-import net.ollie.validus.project.Project;
 import net.ollie.validus.project.ProjectId;
-import net.ollie.validus.specification.Specification;
 import net.ollie.validus.specification.SpecificationId;
 import net.ollie.validus.specification.SpecificationProvider;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,9 +12,7 @@ import java.io.File;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class JavaAnalyzerTest {
 
@@ -32,9 +27,11 @@ class JavaAnalyzerTest {
     @Test
     void shouldAnalyzeTestPackage() {
 
-        final var mockSource = mock(Project.class);
-        final var root = Paths.get(new File(".").getAbsolutePath());
-        final var project = new LocalProject(new ProjectId("test"), root, mockSource);
+        final var selfPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile();
+        final var sampleClass = Paths.get(new File(selfPath, "SampleClass.java").getAbsolutePath());
+
+        final var mockSource = mock(JavaProject.class);
+        final var project = new LocalJavaProject(new ProjectId("test"), sampleClass, mockSource);
 
         final var analyzer = new JavaAnalyzer(mockSpecProvider);
 

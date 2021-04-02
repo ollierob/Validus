@@ -24,8 +24,12 @@ message SpecificationAnalysis {
 
 message Satisfaction {
 
+    string url = 1;
+
 }
 
 message Verification {
+
+    string url = 1;
 
 }

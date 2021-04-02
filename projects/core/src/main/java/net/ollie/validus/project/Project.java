@@ -12,7 +12,7 @@ public interface Project extends BuildsProto<ProjectProto.Project> {
     ProjectId id();
 
     @Nonnull
-    CompletableFuture<LocalProject> toLocalProject();
+    CompletableFuture<? extends LocalProject> toLocalProject();
 
     @Nonnull
     @Override

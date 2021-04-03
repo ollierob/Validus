@@ -3,6 +3,7 @@ package net.ollie.validus.analysis;
 import net.ollie.validus.analysis.satisfaction.Satisfaction;
 import net.ollie.validus.analysis.verification.Verification;
 import net.ollie.validus.project.Project;
+import net.ollie.validus.project.RemoteProject;
 import net.ollie.validus.specification.SpecificationId;
 import net.ollie.validus.specification.SpecificationProvider;
 
@@ -11,11 +12,11 @@ import java.util.Map;
 
 public class ProjectAnalysisBuilder {
 
-    private final Project project;
+    private final RemoteProject project;
     private final SpecificationProvider provider;
     private final Map<SpecificationId, SpecificationAnalysis> specifications = new HashMap<>();
 
-    public ProjectAnalysisBuilder(final Project project, final SpecificationProvider provider) {
+    public ProjectAnalysisBuilder(final RemoteProject project, final SpecificationProvider provider) {
         this.project = project;
         this.provider = provider;
     }

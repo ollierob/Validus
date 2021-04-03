@@ -33,7 +33,7 @@ public class JavaAnalyzer implements Analyzer<LocalJavaProject> {
     @Nonnull
     public ProjectAnalysis analyze(final LocalJavaProject project) {
         try {
-            final var builder = new ProjectAnalysisBuilder(project.source(), specificationProvider);
+            final var builder = new ProjectAnalysisBuilder(project.remote(), specificationProvider);
             final var root = project.root().toFile();
             final var visitor = new ProjectAnalysisVisitor(project);
             this.visit(visitor, root, builder);

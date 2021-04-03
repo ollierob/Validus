@@ -1,6 +1,5 @@
 package net.ollie.validus.analyzer.java;
 
-import net.ollie.validus.project.ProjectId;
 import net.ollie.validus.project.java.LocalJavaProject;
 import net.ollie.validus.project.java.RemoteJavaProject;
 import net.ollie.validus.specification.SpecificationId;
@@ -33,7 +32,7 @@ class JavaAnalyzerTest {
         final var sampleClass = Paths.get(new File(selfPath, "SampleClass.java").getAbsolutePath());
 
         final var mockSource = mock(RemoteJavaProject.class);
-        final var project = new LocalJavaProject(new ProjectId("test"), sampleClass, mockSource);
+        final var project = new LocalJavaProject(sampleClass, mockSource);
 
         final var analyzer = new JavaAnalyzer(mockSpecProvider);
 

@@ -4,8 +4,8 @@ import com.github.javaparser.StaticJavaParser;
 import net.ollie.validus.Analyzer;
 import net.ollie.validus.analysis.ProjectAnalysis;
 import net.ollie.validus.analysis.ProjectAnalysisBuilder;
-import net.ollie.validus.project.java.JavaProject;
 import net.ollie.validus.project.java.LocalJavaProject;
+import net.ollie.validus.project.java.RemoteJavaProject;
 import net.ollie.validus.specification.SpecificationProvider;
 
 import javax.annotation.Nonnull;
@@ -26,7 +26,7 @@ public class JavaAnalyzer implements Analyzer<LocalJavaProject> {
     }
 
     @Nonnull
-    public CompletableFuture<ProjectAnalysis> analyze(final JavaProject project) {
+    public CompletableFuture<ProjectAnalysis> analyze(final RemoteJavaProject project) {
         return project.toLocalProject().thenApply(this::analyze);
     }
 

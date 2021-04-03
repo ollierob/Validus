@@ -7,7 +7,6 @@ public interface LocalProject extends Project {
 
     @Nonnull
     @Override
-    @Deprecated
     default CompletableFuture<? extends LocalProject> toLocalProject() {
         return CompletableFuture.completedFuture(this);
     }

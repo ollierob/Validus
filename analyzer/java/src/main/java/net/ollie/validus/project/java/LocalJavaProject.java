@@ -8,7 +8,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
-public record LocalJavaProject(ProjectId id, Path root, JavaProject source) implements JavaProject, LocalProject {
+public record LocalJavaProject(ProjectId id, Path root, RemoteJavaProject source) implements JavaProject, LocalProject {
 
     @Nonnull
     @Override
@@ -18,7 +18,6 @@ public record LocalJavaProject(ProjectId id, Path root, JavaProject source) impl
 
     @Nonnull
     @Override
-    @Deprecated
     public CompletableFuture<LocalJavaProject> toLocalProject() {
         return CompletableFuture.completedFuture(this);
     }

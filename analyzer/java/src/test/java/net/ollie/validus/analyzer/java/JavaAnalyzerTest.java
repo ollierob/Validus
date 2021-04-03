@@ -1,9 +1,8 @@
-package net.ollie.validus;
+package net.ollie.validus.analyzer.java;
 
-import net.ollie.validus.analyzer.java.JavaAnalyzer;
-import net.ollie.validus.project.java.JavaProject;
-import net.ollie.validus.project.java.LocalJavaProject;
 import net.ollie.validus.project.ProjectId;
+import net.ollie.validus.project.java.LocalJavaProject;
+import net.ollie.validus.project.java.RemoteJavaProject;
 import net.ollie.validus.specification.SpecificationId;
 import net.ollie.validus.specification.SpecificationProvider;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +32,7 @@ class JavaAnalyzerTest {
         final var selfPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile();
         final var sampleClass = Paths.get(new File(selfPath, "SampleClass.java").getAbsolutePath());
 
-        final var mockSource = mock(JavaProject.class);
+        final var mockSource = mock(RemoteJavaProject.class);
         final var project = new LocalJavaProject(new ProjectId("test"), sampleClass, mockSource);
 
         final var analyzer = new JavaAnalyzer(mockSpecProvider);

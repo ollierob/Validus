@@ -24,7 +24,7 @@ class ProjectAnalysisVisitor extends VoidVisitorAdapter<ProjectAnalysisBuilder> 
 
     private final LocalJavaProject project;
 
-    ProjectAnalysisVisitor(LocalJavaProject project) {
+    ProjectAnalysisVisitor(final LocalJavaProject project) {
         this.project = project;
     }
 

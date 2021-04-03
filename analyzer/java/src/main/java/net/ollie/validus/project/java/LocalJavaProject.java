@@ -1,4 +1,4 @@
-package net.ollie.validus;
+package net.ollie.validus.project.java;
 
 import net.ollie.validus.project.LocalProject;
 import net.ollie.validus.project.ProjectId;

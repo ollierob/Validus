@@ -1,4 +1,4 @@
-package net.ollie.validus;
+package net.ollie.validus.analyzer.java;
 
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.AnnotationExpr;
@@ -12,6 +12,8 @@ import net.ollie.validus.analysis.verification.TestVerification;
 import net.ollie.validus.analysis.verification.Verification;
 import net.ollie.validus.annotation.Satisfies;
 import net.ollie.validus.annotation.Verifies;
+import net.ollie.validus.project.java.JavaMethod;
+import net.ollie.validus.project.java.LocalJavaProject;
 import net.ollie.validus.specification.SpecificationId;
 
 import java.util.Collections;

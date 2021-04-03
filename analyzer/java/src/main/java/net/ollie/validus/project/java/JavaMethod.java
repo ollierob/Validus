@@ -1,4 +1,4 @@
-package net.ollie.validus;
+package net.ollie.validus.project.java;
 
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;

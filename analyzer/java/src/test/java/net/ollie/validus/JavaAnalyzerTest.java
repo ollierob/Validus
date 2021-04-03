@@ -1,5 +1,8 @@
 package net.ollie.validus;
 
+import net.ollie.validus.analyzer.java.JavaAnalyzer;
+import net.ollie.validus.project.java.JavaProject;
+import net.ollie.validus.project.java.LocalJavaProject;
 import net.ollie.validus.project.ProjectId;
 import net.ollie.validus.specification.SpecificationId;
 import net.ollie.validus.specification.SpecificationProvider;

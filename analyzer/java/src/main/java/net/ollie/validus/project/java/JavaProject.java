@@ -5,7 +5,7 @@ import net.ollie.validus.project.Project;
 import javax.annotation.Nonnull;
 import java.net.URL;
 
-public interface JavaProject extends Project {
+public sealed interface JavaProject extends Project permits LocalJavaProject, RemoteJavaProject {
 
     @Nonnull
     URL resolveUrl(JavaMethod method);

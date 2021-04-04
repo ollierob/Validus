@@ -57,7 +57,7 @@ class ProjectAnalysisVisitor extends VoidVisitorAdapter<ProjectAnalysisBuilder> 
     private Satisfaction getSatisfaction(final MethodDeclaration methodDeclaration) {
         final var method = JavaMethod.resolve(methodDeclaration);
         final var url = project.resolveUrl(method);
-        return new ClassMethodSatisfaction(method.packageName(), method.className(), method.methodName(), url);
+        return new ClassMethodSatisfaction(method.packageName(), method.outerClassName(), method.methodName(), url);
     }
 
     private void add(final Satisfaction satisfaction, final Set<SpecificationId> ids, final ProjectAnalysisBuilder builder) {
@@ -69,7 +69,7 @@ class ProjectAnalysisVisitor extends VoidVisitorAdapter<ProjectAnalysisBuilder> 
     private Verification getVerification(final MethodDeclaration methodDeclaration) {
         final var method = JavaMethod.resolve(methodDeclaration);
         final var url = project.resolveUrl(method);
-        return new TestVerification(method.className(), methodDeclaration.getNameAsString(), url);
+        return new TestVerification(method.outerClassName(), methodDeclaration.getNameAsString(), url);
     }
 
     private void add(final Verification verification, final Set<SpecificationId> ids, final ProjectAnalysisBuilder builder) {

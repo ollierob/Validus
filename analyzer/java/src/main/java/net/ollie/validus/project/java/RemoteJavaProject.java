@@ -17,7 +17,7 @@ public record RemoteJavaProject(RemoteProject remote, Path javaPath) implements 
     @Nonnull
     @Override
     public URL resolveUrl(final JavaMethod method) {
-        throw new UnsupportedOperationException(); //TODO
+        return remote.resolveUrl(method.filePath());
     }
 
     @Nonnull

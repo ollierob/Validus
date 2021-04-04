@@ -27,8 +27,8 @@ public record JavaMethod(String packageName, String outerClassName, String inner
         return new JavaMethod(packageName, classDeclaration.getNameAsString(), methodDeclaration.getNameAsString());
     }
 
-    public Path filePath() {
-        var path = Path.of("");
+    public Path relativeFilePath() {
+        Path path = Path.of("");
         for (final var p : this.packagePath()) {
             path = path.resolve(p);
         }

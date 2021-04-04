@@ -17,7 +17,7 @@ public record RemoteJavaProject(RemoteProject remote, Path javaPath) implements 
     @Nonnull
     @Override
     public URL resolveUrl(final JavaMethod method) {
-        return remote.resolveUrl(method.filePath());
+        return remote.resolveUrl(method.relativeFilePath());
     }
 
     @Nonnull

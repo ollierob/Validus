@@ -6,12 +6,18 @@ import java.util.concurrent.CompletableFuture;
 public interface FromRemoteProject<L extends LocalProject> extends RemoteProject {
 
     @Nonnull
-    RemoteProject source();
+    RemoteProject remote();
+
+    @Nonnull
+    @Override
+    default ProjectId id() {
+        return this.remote().id();
+    }
 
     @Nonnull
     @Override
     default CompletableFuture<L> toLocalProject() {
-        return this.source().toLocalProject().thenApply(this::transform);
+        return this.remote().toLocalProject().thenApply(this::transform);
     }
 
     @Nonnull

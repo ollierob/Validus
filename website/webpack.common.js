@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: ["./src/main/js/Main.tsx"]
+        main: ["./src/main/js/main/Main.tsx"]
     },
     output: {
         path: __dirname + "/target/classes/js",

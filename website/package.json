@@ -2,7 +2,7 @@
   "name": "website",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js",
+  "main": "webpack.common.js",
   "private": "true",
   "dependencies": {
     "google-protobuf": "^3.15.6",

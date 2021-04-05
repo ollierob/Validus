@@ -11,6 +11,24 @@
 
     <artifactId>website</artifactId>
 
+    <properties>
+        <protoc.command>protoc</protoc.command>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <properties>
+                <protoc.command>protoc-win</protoc.command>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>net.ollie.validus</groupId>
@@ -58,7 +76,7 @@
                             <executable>npm</executable>
                             <arguments>
                                 <argument>run</argument>
-                                <argument>protoc</argument>
+                                <argument>${protoc.command}</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -100,6 +118,14 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>15</source>
+                    <target>15</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

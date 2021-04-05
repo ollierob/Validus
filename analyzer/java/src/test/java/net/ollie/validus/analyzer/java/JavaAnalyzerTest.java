@@ -5,6 +5,7 @@ import net.ollie.validus.project.java.RemoteJavaProject;
 import net.ollie.validus.specification.SpecificationId;
 import net.ollie.validus.specification.SpecificationProvider;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -25,6 +26,7 @@ class JavaAnalyzerTest {
         mockSpecProvider = mock(SpecificationProvider.class, Mockito.RETURNS_MOCKS);
     }
 
+    @Disabled
     @Test
     void shouldAnalyzeTestPackage() {
 

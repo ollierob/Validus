@@ -11,11 +11,42 @@
 
     <artifactId>server</artifactId>
 
+    <properties>
+        <resteasy.version>4.6.0.Final</resteasy.version>
+        <jetty.version>9.4.39.v20210325</jetty.version>
+        <log4j.version>2.14.1</log4j.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>net.ollie.validus</groupId>
             <artifactId>java-analyzer</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-guice</artifactId>
+            <version>${resteasy.version}</version>
         </dependency>
     </dependencies>
 

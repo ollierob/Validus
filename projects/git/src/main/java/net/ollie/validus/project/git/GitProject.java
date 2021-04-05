@@ -4,4 +4,6 @@ import net.ollie.validus.project.RemoteProject;
 
 public interface GitProject extends RemoteProject {
 
+    int version();
+
 }

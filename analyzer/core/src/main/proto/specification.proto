@@ -9,3 +9,9 @@ message Specification {
     string description = 2;
 
 }
+
+message SpecificationList {
+
+    repeated Specification specification = 1;
+
+}

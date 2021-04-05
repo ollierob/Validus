@@ -27,3 +27,25 @@ export namespace Specification {
   }
 }
 
+export class SpecificationList extends jspb.Message {
+  clearSpecificationList(): void;
+  getSpecificationList(): Array<Specification>;
+  setSpecificationList(value: Array<Specification>): void;
+  addSpecification(value?: Specification, index?: number): Specification;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SpecificationList.AsObject;
+  static toObject(includeInstance: boolean, msg: SpecificationList): SpecificationList.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SpecificationList, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SpecificationList;
+  static deserializeBinaryFromReader(message: SpecificationList, reader: jspb.BinaryReader): SpecificationList;
+}
+
+export namespace SpecificationList {
+  export type AsObject = {
+    specificationList: Array<Specification.AsObject>,
+  }
+}
+

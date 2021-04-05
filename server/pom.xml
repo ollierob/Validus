@@ -19,9 +19,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>net.ollie.validus</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>java-analyzer</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

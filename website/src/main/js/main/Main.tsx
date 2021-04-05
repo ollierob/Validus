@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {LeftMenu, RightContent, TopMenu} from "./Layout";
+import "./Layout.css"
 
 class Main extends React.PureComponent {
 

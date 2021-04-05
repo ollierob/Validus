@@ -32,7 +32,7 @@ public class GitProjectResource extends AbstractResource {
             @PathParam("version") final int version,
             final GitProjectProto.GitProjectSpec spec)
             throws Exception {
-        return provider.edit(id, new GitlabProjectSpec(version, new URL(spec.getUrl())));
+        return provider.edit(new GitlabProjectSpec(id, version, new URL(spec.getUrl())));
     }
 
 }

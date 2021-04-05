@@ -7,10 +7,12 @@ import javax.inject.Named;
 
 class ServerModule extends AbstractModule {
 
+    private final ServerConfig config = new ServerConfig(System.getProperties());
+
     @Provides
     @Named("port")
     int port() {
-        return 9080;
+        return config.port();
     }
 
 }

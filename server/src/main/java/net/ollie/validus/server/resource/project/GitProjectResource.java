@@ -9,11 +9,10 @@ import net.ollie.validus.server.resource.AbstractResource;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
+import java.net.URL;
 
 @Singleton
 @Path("project/git")
@@ -27,12 +26,13 @@ public class GitProjectResource extends AbstractResource {
     }
 
     @PUT
-    @Path("edit/gitlab/{id}")
+    @Path("edit/gitlab/{id}/{version}")
     public GitlabProject editGitlabProject(
             @PathParam("id") final ProjectId id,
-            @QueryParam("version") @DefaultValue("0") final int version,
-            final GitProjectProto.GitlabProjectSpec spec) {
-        return provider.set(id, new GitlabProjectSpec(version));
+            @PathParam("version") final int version,
+            final GitProjectProto.GitProjectSpec spec)
+            throws Exception {
+        return provider.edit(id, new GitlabProjectSpec(version, new URL(spec.getUrl())));
     }
 
 }

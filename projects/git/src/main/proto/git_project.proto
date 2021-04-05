@@ -3,6 +3,17 @@ syntax = "proto3";
 option java_package = "net.ollie.validus";
 option java_outer_classname = "GitProjectProto";
 
-message GitlabProjectSpec {
+import "credentials.proto";
+
+message GitProjectSpec {
+
+    string url = 1;
+
+    oneof credentials {
+
+        string deployToken = 10;
+        UsernamePassword usernamePassword = 11;
+
+    }
 
 }

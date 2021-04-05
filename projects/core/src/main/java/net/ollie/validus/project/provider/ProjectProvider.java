@@ -11,6 +11,11 @@ public interface ProjectProvider<P extends RemoteProject> {
     @Nonnull
     Optional<P> get(ProjectId id);
 
+    @Nonnull
+    default P require(final ProjectId id) {
+        return this.get(id).get();
+    }
+
     interface Mutable<P extends RemoteProject> extends ProjectProvider<P> {
 
     }

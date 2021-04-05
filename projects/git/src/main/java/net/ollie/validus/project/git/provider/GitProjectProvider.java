@@ -5,11 +5,14 @@ import net.ollie.validus.project.git.GitProject;
 import net.ollie.validus.project.git.GitlabProject;
 import net.ollie.validus.project.provider.ProjectProvider;
 
+import javax.annotation.Nonnull;
+
 public interface GitProjectProvider extends ProjectProvider<GitProject> {
 
     interface Mutable extends GitProjectProvider, ProjectProvider.Mutable<GitProject> {
 
-        GitlabProject set(ProjectId id, GitlabProjectSpec spec);
+        @Nonnull
+        GitlabProject edit(ProjectId id, GitlabProjectSpec spec);
 
     }
 

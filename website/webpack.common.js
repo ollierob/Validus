@@ -46,5 +46,5 @@ module.exports = {
             template: "src/main/resources/page.html.template",
             filename: "main.html"
         })
-        ]
+    ]
 }

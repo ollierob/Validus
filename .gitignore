@@ -2,5 +2,4 @@
 .idea
 target/
 node_modules/
-**/protobuf/*.d.ts
 **/protobuf/*.js

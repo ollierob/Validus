@@ -2,16 +2,17 @@ package net.ollie.validus.project.java;
 
 import net.ollie.validus.project.FromRemoteProject;
 import net.ollie.validus.project.LocalProject;
+import net.ollie.validus.project.ProjectId;
 import net.ollie.validus.project.RemoteProject;
 
 import javax.annotation.Nonnull;
 import java.net.URL;
 import java.nio.file.Path;
 
-public record RemoteJavaProject(RemoteProject remote, Path javaPath) implements JavaProject, FromRemoteProject<LocalJavaProject> {
+public record RemoteJavaProject(ProjectId id, RemoteProject remote, Path javaPath) implements JavaProject, FromRemoteProject<LocalJavaProject> {
 
-    public RemoteJavaProject(final RemoteProject remote) {
-        this(remote, null);
+    public RemoteJavaProject(final ProjectId id, final RemoteProject remote) {
+        this(id, remote, null);
     }
 
     @Nonnull

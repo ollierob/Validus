@@ -7,6 +7,8 @@ import java.util.concurrent.CompletableFuture;
 
 public interface RemoteProject extends Project {
 
+    int version();
+
     @Nonnull
     URL resolveUrl(Path filePath);
 

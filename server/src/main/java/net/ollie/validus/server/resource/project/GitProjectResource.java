@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -22,17 +23,17 @@ import static net.ollie.protobuf.jaxrs.ProtobufMediaType.APPLICATION_PROTOBUF;
 @Path("project/git")
 public class GitProjectResource extends AbstractResource {
 
-    private final GitProjectProvider.Mutable provider;
+    private final GitProjectProvider provider;
 
     @Inject
-    GitProjectResource(final GitProjectProvider.Mutable provider) {
+    GitProjectResource(final GitProjectProvider provider) {
         this.provider = provider;
     }
 
     @GET
     @Path("gitlab/{id}")
     public GitlabProject getGitlabProject(@PathParam("id") final ProjectId id) {
-        return provider.get(id, GitlabProject.class).orElse(null);
+        return provider.get(id, GitlabProject.class).orElseThrow(NotFoundException::new);
     }
 
     @PUT

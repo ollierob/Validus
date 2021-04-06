@@ -21,8 +21,4 @@ public interface ProjectProvider<P extends RemoteProject> {
         return this.get(id).get();
     }
 
-    interface Mutable<P extends RemoteProject> extends ProjectProvider<P> {
-
-    }
-
 }

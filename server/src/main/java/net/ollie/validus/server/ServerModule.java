@@ -3,6 +3,9 @@ package net.ollie.validus.server;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
+import net.ollie.validus.project.git.GitProjectModule;
+import net.ollie.validus.project.java.JavaProjectModule;
+import net.ollie.validus.server.resource.ResourceModule;
 
 import javax.inject.Named;
 
@@ -13,7 +16,9 @@ class ServerModule extends AbstractModule {
     @Override
     protected void configure() {
         super.configure();
-        this.bind(OpenApiResource.class); //Generate OpenAPI spec at /openapi.yaml
+        this.install(new GitProjectModule());
+        this.install(new JavaProjectModule());
+        this.install(new ResourceModule());
     }
 
     @Provides

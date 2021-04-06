@@ -12,12 +12,6 @@ public interface FromRemoteProject<L extends LocalProject> extends RemoteProject
 
     @Nonnull
     @Override
-    default ProjectId id() {
-        return this.remote().id();
-    }
-
-    @Nonnull
-    @Override
     default CompletableFuture<L> toLocalProject() {
         return this.remote().toLocalProject().thenApply(this::transform);
     }

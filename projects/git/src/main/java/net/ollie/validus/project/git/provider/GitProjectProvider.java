@@ -1,5 +1,6 @@
 package net.ollie.validus.project.git.provider;
 
+import net.ollie.validus.project.ProjectId;
 import net.ollie.validus.project.git.GitProject;
 import net.ollie.validus.project.git.GitlabProject;
 import net.ollie.validus.project.provider.ProjectProvider;
@@ -11,10 +12,10 @@ public interface GitProjectProvider extends ProjectProvider<GitProject> {
     interface Mutable extends GitProjectProvider, ProjectProvider.Mutable<GitProject> {
 
         @Nonnull
-        GitProject edit(@Nonnull GitProjectSpec spec);
+        GitProject edit(ProjectId id, GitProjectSpec spec, int version);
 
         @Nonnull
-        GitlabProject edit(@Nonnull GitlabProjectSpec spec);
+        GitlabProject edit(ProjectId id, GitlabProjectSpec spec, int version);
 
     }
 

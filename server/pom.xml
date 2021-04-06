@@ -48,6 +48,11 @@
             <artifactId>resteasy-guice</artifactId>
             <version>${resteasy.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-jaxrs2</artifactId>
+            <version>2.1.7</version>
+        </dependency>
     </dependencies>
 
 </project>

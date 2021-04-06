@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 import java.net.URL;
 import java.nio.file.Path;
 
-public record RemoteJavaProject(ProjectId id, RemoteProject remote, Path javaPath) implements JavaProject, FromRemoteProject<LocalJavaProject> {
+public record RemoteJavaProject(ProjectId id, RemoteProject remote, Path javaPath, int version) implements JavaProject, FromRemoteProject<LocalJavaProject> {
 
-    public RemoteJavaProject(final ProjectId id, final RemoteProject remote) {
-        this(id, remote, null);
+    public RemoteJavaProject(final ProjectId id, final RemoteProject remote, int version) {
+        this(id, remote, null, version);
     }
 
     @Nonnull

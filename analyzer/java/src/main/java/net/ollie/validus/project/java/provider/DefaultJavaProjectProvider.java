@@ -23,7 +23,7 @@ public class DefaultJavaProjectProvider implements JavaProjectProvider {
     @Override
     public RemoteJavaProject edit(final ProjectId id, final JavaProjectSpec spec, final int version) {
         final var remote = delegate.require(spec.remoteId());
-        final var project = new RemoteJavaProject(id, remote);
+        final var project = new RemoteJavaProject(id, remote, version + 1);
         return delegate.edit(project, version);
     }
 

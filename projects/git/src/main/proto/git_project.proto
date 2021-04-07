@@ -11,7 +11,7 @@ message GitProjectSpec {
 
     oneof credentials {
 
-        string deployToken = 10;
+        UsernamePassword usernameToken = 10;
         UsernamePassword usernamePassword = 11;
 
     }

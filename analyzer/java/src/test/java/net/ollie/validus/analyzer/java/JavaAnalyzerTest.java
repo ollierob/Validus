@@ -31,7 +31,7 @@ class JavaAnalyzerTest {
     void shouldAnalyzeTestPackage() {
 
         final var selfPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile();
-        final var sampleClass = Paths.get(new File(selfPath, "SampleClass.java").getAbsolutePath());
+        final var sampleClass = new File(selfPath, "SampleClass.java");
 
         final var mockSource = mock(RemoteJavaProject.class);
         final var project = new LocalJavaProject(sampleClass, mockSource);

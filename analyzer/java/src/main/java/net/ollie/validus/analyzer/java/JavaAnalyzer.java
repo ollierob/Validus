@@ -35,7 +35,7 @@ public class JavaAnalyzer implements Analyzer<LocalJavaProject> {
     public ProjectAnalysis analyze(final LocalJavaProject project) {
         try {
             final var builder = new ProjectAnalysisBuilder(project.remote(), specificationProvider);
-            final var root = project.root().toFile();
+            final var root = project.root();
             final var visitor = new ProjectAnalysisVisitor(project);
             this.visit(visitor, root, builder);
             return builder.build();

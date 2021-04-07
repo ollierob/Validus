@@ -3,12 +3,13 @@ package net.ollie.validus.analysis.satisfaction;
 import net.ollie.protobuf.BuildsProto;
 import net.ollie.validus.AnalysisProto;
 
+import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
 import java.net.URL;
 
 public sealed interface Satisfaction extends BuildsProto<AnalysisProto.Satisfaction> permits ClassMethodSatisfaction {
 
-    @Nonnull
+    @CheckForNull
     URL link();
 
     @Nonnull

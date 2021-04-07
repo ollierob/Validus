@@ -1,5 +1,6 @@
 package net.ollie.validus.analysis;
 
+import com.google.common.collect.ImmutableMap;
 import net.ollie.validus.analysis.satisfaction.Satisfaction;
 import net.ollie.validus.analysis.verification.Verification;
 import net.ollie.validus.project.RemoteProject;
@@ -39,7 +40,7 @@ public class ProjectAnalysisBuilder {
     }
 
     public ProjectAnalysis build() {
-        return new GenericProjectAnalysis(project, new HashMap<>(specifications));
+        return new GenericProjectAnalysis(project, ImmutableMap.copyOf(specifications));
     }
 
 }

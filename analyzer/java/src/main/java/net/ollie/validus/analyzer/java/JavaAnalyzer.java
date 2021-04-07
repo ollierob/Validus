@@ -27,6 +27,7 @@ public class JavaAnalyzer implements Analyzer<LocalJavaProject> {
 
     @Nonnull
     public CompletableFuture<ProjectAnalysis> analyze(final RemoteJavaProject project) {
+        //FIXME dir
         return project.toLocalProject().thenApply(this::analyze);
     }
 

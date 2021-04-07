@@ -1,6 +1,7 @@
 package net.ollie.validus.project;
 
 import javax.annotation.Nonnull;
+import java.io.File;
 import java.nio.file.Path;
 
 public interface LocalProject extends Project {
@@ -9,7 +10,7 @@ public interface LocalProject extends Project {
     RemoteProject remote();
 
     @Nonnull
-    Path root();
+    File root();
 
     @Nonnull
     @Override

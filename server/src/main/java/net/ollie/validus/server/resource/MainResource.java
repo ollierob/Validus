@@ -14,7 +14,7 @@ public class MainResource extends AbstractResource{
     @GET
     @Produces(MediaType.TEXT_HTML)
     public InputStream main() {
-        return this.readUnprotected("/js/main.html");
+        return this.readUnprotected("/website/main.html");
     }
 
     @GET
@@ -22,7 +22,7 @@ public class MainResource extends AbstractResource{
     @Produces("application/javascript")
     public InputStream javascript(@PathParam("file") final String file) {
         if(file == null || !file.endsWith(".js") || file.startsWith(".")) throw new NotFoundException();
-        return this.readUnprotected("/js/" + file);
+        return this.readUnprotected("/website/" + file);
     }
 
 }

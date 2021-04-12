@@ -109,7 +109,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/../server/target/classes/js</outputDirectory>
+                            <outputDirectory>${basedir}/../server/target/classes/website</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${basedir}/target/classes/js/</directory>

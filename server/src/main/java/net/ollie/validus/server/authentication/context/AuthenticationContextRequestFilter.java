@@ -30,10 +30,10 @@ public class AuthenticationContextRequestFilter implements ContainerRequestFilte
     private AuthenticationContext getContext(final ContainerRequestContext context) {
         final var headers = context.getHeaders();
         final var sessionId = headers.get("SessionId");
-        if (sessionId == null || sessionId.size() != 1) return AuthenticationContext.NOT_LOGGED_IN;
+        if (sessionId == null || sessionId.size() != 1) return AuthenticationContext.NOT_AUTHORIZED;
         return sessionProvider.getSession(sessionId.get(0))
                 .<AuthenticationContext>map(AuthenticatedContext::new)
-                .orElse(AuthenticationContext.NOT_LOGGED_IN);
+                .orElse(AuthenticationContext.NOT_AUTHORIZED);
     }
 
 }

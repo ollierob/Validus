@@ -4,6 +4,7 @@ import net.ollie.validus.project.ProjectId;
 import net.ollie.validus.project.git.GitlabProject;
 import net.ollie.validus.project.git.provider.GitProjectProvider;
 import net.ollie.validus.project.git.provider.GitlabProjectSpec;
+import net.ollie.validus.server.authentication.context.AuthenticationContext;
 import net.ollie.validus.server.resource.AbstractResource;
 
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 
 import static net.ollie.protobuf.jaxrs.ProtobufMediaType.APPLICATION_PROTOBUF;
 
@@ -32,7 +34,9 @@ public class GitProjectResource extends AbstractResource {
 
     @GET
     @Path("gitlab/{id}")
-    public GitlabProject getGitlabProject(@PathParam("id") final ProjectId id) {
+    public GitlabProject getGitlabProject(
+            @PathParam("id") final ProjectId id,
+            @Context final AuthenticationContext authenticationContext) {
         return provider.get(id, GitlabProject.class).orElseThrow(NotFoundException::new);
     }
 

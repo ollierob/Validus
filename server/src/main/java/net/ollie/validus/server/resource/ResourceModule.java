@@ -10,6 +10,7 @@ public class ResourceModule extends AbstractModule {
     @Override
     protected void configure() {
         super.configure();
+        this.bind(MainResource.class);
         this.bind(OpenApiResource.class); //Generate OpenAPI spec at /openapi.yaml
         this.bind(JavaProjectResource.class);
         this.bind(GitProjectResource.class);
